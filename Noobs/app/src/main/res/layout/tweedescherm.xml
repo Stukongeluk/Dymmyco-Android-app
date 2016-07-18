@@ -3,14 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No text m888"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="74dp" />
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/plus"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="21dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
+    <ListView
+        android:id="@+id/my_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+    </RelativeLayout>

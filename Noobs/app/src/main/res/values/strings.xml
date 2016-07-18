@@ -2,4 +2,7 @@
     <string name="app_name">Noobs</string>
     <string name="confirm">Confirm</string>
     <string name="username">Username</string>
+    <string name="hello">Hello! </string>
+    <string name="course_header">Vak:</string>
+    <string name="studypoints_header">EC:</string>
 </resources>
