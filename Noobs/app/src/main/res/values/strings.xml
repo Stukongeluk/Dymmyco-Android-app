@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Noobs</string>
+    <string name="hintNaam">Username</string>
+    <string name="buttonNaam">Bevestigen</string>
 </resources>
