@@ -2,22 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
 
     <EditText
+        android:id="@+id/editText"
+        android:textColorHint="@color/colorText"
+        android:textColor="@color/colorText"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:id="@+id/editText"
-        android:layout_marginBottom="40dp"
-        android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:hint="Username" />
+        android:hint="@string/username"
+        android:singleLine="true"
+        android:layout_marginTop="111dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bevestig"
         android:id="@+id/button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/bevestig"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp" />
 </RelativeLayout>
+
+

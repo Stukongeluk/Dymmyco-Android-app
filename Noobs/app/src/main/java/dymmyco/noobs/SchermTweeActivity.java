@@ -2,6 +2,8 @@ package dymmyco.noobs;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.TextView;
 
 /**
@@ -17,6 +19,12 @@ public class SchermTweeActivity extends AppCompatActivity {
 
         TextView name = (TextView) findViewById(R.id.textView);
         name.setText(naam);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
     }
 }
