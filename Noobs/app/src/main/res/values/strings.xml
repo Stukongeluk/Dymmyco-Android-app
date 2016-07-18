@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Noobs</string>
-    <string name="bevestig">Bevestig</string>
+    <string name="confirm">Confirm</string>
     <string name="username">Username</string>
 </resources>
