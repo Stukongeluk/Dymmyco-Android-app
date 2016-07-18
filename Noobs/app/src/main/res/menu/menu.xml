@@ -2,14 +2,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_favorite"
+        android:id="@+id/action_yomum"
         android:title="Yo mum"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_help"
+        android:title="Help"
+        app:showAsAction="never" />
 
     <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_settings"
+    <item
+        android:id="@+id/action_settings"
         android:title="Settings"
-        app:showAsAction="never"/>
-   </menu>
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_close"
+        android:title="Close Application"
+        app:showAsAction="never" />
+</menu>
 
 
