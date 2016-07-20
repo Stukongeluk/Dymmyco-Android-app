@@ -1,5 +1,6 @@
 package dymmyco.noobs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -70,20 +71,7 @@ public class SchermTweeActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
-        //lelijk maar moest ff snel snachts ;D//TODO
-        File file = ProfielActivity.getFile();
-
-        int length = (int) file.length();
-        byte[] bytes = new byte[length];
-
-        try {//Reads file content
-            FileInputStream inputStream = new FileInputStream(file);
-            inputStream.read(bytes);
-            inputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String userName = new String(bytes);//Vies want als er meer info bij het text bestandje komt laat ie niet alleen username zien xD//TODO
+        String userName = getName(ProfielActivity.getFile());
 
         MenuItem name = menu.findItem(R.id.action_header);
         name.setTitle(userName);
@@ -93,6 +81,11 @@ public class SchermTweeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_header:
+                //The profile page
+                getApplicationContext().startActivity(new Intent(getApplicationContext(), ProfielEditActivity.class));
+                return true;
+
             case R.id.action_help:
                 // help stuff
                 return true;
@@ -112,5 +105,20 @@ public class SchermTweeActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    public String getName(File file) {
+        //lelijk maar moest ff snel snachts ;D//TODO
+        int length = (int) file.length();
+        byte[] bytes = new byte[length];
+
+        try {//Reads file content
+            FileInputStream inputStream = new FileInputStream(file);
+            inputStream.read(bytes);
+            inputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new String(bytes);//Vies want als er meer info bij het text bestandje komt laat ie niet alleen username zien xD//TODO
     }
 }

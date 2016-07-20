@@ -1,9 +1,16 @@
 <resources>
-    <string name="app_name">Noobs</string>
+    <string name="app_name">DYMMYCO</string>
     <string name="confirm">Confirm</string>
     <string name="username">Username</string>
+    <string name="pogoLevel">Pokémon GO Level</string>
+
     <string name="hello">Hello! </string>
+
     <string name="course_header">Vak:</string>
     <string name="studypoints_header">EC:</string>
-    <string name="pogoLevel">Pokémon GO Level</string>
+
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="nameholder">Name:</string>
+
 </resources>
