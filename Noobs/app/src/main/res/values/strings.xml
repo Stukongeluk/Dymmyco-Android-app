@@ -5,4 +5,5 @@
     <string name="hello">Hello! </string>
     <string name="course_header">Vak:</string>
     <string name="studypoints_header">EC:</string>
+    <string name="pogoLevel">Pokémon GO Level</string>
 </resources>

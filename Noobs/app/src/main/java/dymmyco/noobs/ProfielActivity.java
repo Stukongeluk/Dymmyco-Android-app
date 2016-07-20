@@ -10,33 +10,53 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 /**
- * This class handles the logic of the first screen, if the user doesn't have a username, he'll be redirected to the profile screen.
- * Created by Dylan on 18-7-2016.
+ * This class handles the logic of the profile activity screen. It's responsible for making a file with user data.
+ * Created by Dylan on 20-7-2016.
  */
-public class MainActivity extends AppCompatActivity {
+public class ProfielActivity extends AppCompatActivity {
+    private static File file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.profielscherm);
 
-        if (ProfielActivity.getFile() == null) {
-            startActivity(new Intent(this, ProfielActivity.class));
-        }
-
-        setContentView(R.layout.inlogscherm);
-
-        Button login = (Button) findViewById(R.id.button);
+        Button login = (Button) findViewById(R.id.buttonDone);
         login.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SchermTweeActivity.class);
-                String naam = getIntent().getStringExtra("Naam");
-                i.putExtra("Naam", naam);
-                startActivity(new Intent(i));
+                EditText name = (EditText) findViewById(R.id.editName);
+                String userName = name.getText().toString();
+
+                try {//Writes player name to file
+                    File path = getFilesDir();
+                    file = new File(path, "ProfileData");
+                    FileOutputStream fos = new FileOutputStream(file);
+                    fos.write(userName.getBytes());
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
+    }
+
+    /**
+     * -
+     * Static method to get the file with user data. Usable in other classes.
+     *
+     * @return file
+     */
+    //Lelijk //TODO
+    public static File getFile() {
+        return file;
     }
 
     @Override
@@ -49,9 +69,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_header:
-                startActivity(new Intent(this, ProfielActivity.class));
-                return true;
             case R.id.action_help:
                 // help stuff
                 return true;

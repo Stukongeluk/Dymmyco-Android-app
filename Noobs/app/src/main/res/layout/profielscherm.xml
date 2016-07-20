@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
+
+    <EditText
+        android:id="@+id/editName"
+        android:textColorHint="@color/colorText"
+        android:textColor="@color/colorText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="@string/username"
+        android:singleLine="true"
+        android:layout_marginTop="85dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/editPogo"
+        android:textColorHint="@color/colorText"
+        android:textColor="@color/colorText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="@string/pogoLevel"
+        android:singleLine="true"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/editName"
+        android:layout_alignStart="@+id/editName" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:id="@+id/buttonDone"
+        android:layout_below="@+id/editPogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+
+</RelativeLayout>
