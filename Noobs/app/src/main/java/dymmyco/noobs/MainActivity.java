@@ -92,18 +92,17 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Check if the a file has content in it
-     * (Can be used for checks)
+     * (Can be used for checks, Henk would kill himself with those nested if's)
      * @param file
      * @return
      */
     public boolean contentExist(File file) {
-        if(file.exists()) {
-            int length = (int) file.length();
-            Log.d("Size", "Size =" + length);
-            if(length > 0) {
-                return true;
-            } else {
-                return false;
+        if(file != null ) {
+            if(file.exists()) {
+                int length = (int) file.length();
+                if(length > 0) {
+                    return true;
+                }
             }
         }
         return false;
