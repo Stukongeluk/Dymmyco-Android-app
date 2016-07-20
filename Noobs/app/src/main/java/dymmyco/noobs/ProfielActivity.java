@@ -43,7 +43,8 @@ public class ProfielActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                //Instead of making new activity, return to the previous activity ;D
+                finish();
             }
         });
     }
