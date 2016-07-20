@@ -83,7 +83,7 @@ public class SchermTweeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_header:
                 //The profile page
-                getApplicationContext().startActivity(new Intent(getApplicationContext(), ProfielEditActivity.class));
+                this.startActivity(new Intent(getApplicationContext(), ProfielEditActivity.class));
                 return true;
 
             case R.id.action_help:

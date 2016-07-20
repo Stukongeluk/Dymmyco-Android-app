@@ -24,9 +24,10 @@ public class ProfielEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profielscherm2);
 
-        Button save = (Button) findViewById(R.id.profileSave);
+        Button save = (Button) findViewById(R.id.profilesave);
         EditText naam = (EditText) findViewById(R.id.nameview);
         naam.setText(getName(ProfielActivity.getFile()));
+        Button cancel = (Button) findViewById(R.id.profilecancel);
 
         save.setOnClickListener(new View.OnClickListener() {
 
@@ -48,10 +49,7 @@ public class ProfielEditActivity extends AppCompatActivity {
                 Toast.makeText(ProfielEditActivity.this,"Opgeslagen", Toast.LENGTH_SHORT).show();
             }
         });
-
-        Button cancel = (Button) findViewById(R.id.profileCancel);
         cancel.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 finish();
