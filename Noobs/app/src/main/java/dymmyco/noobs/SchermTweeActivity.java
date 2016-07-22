@@ -2,6 +2,7 @@ package dymmyco.noobs;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -40,6 +41,7 @@ public class SchermTweeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setContentView(R.layout.tweedescherm);
 
         //Toast the welcome message
@@ -55,12 +57,12 @@ public class SchermTweeActivity extends AppCompatActivity {
         });
         courseList = (ListView) findViewById(R.id.my_list_view);
         courseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                              @Override
-                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                                  Toast t = Toast.makeText(SchermTweeActivity.this, "Positie kan die opvragen omg: " + position, Toast.LENGTH_SHORT);
-                                                  t.show();
-                                              }
-                                          }
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Toast t = Toast.makeText(SchermTweeActivity.this, "Positie kan die opvragen omg: " + position, Toast.LENGTH_SHORT);
+                t.show();
+            }
+        }
         );
         //hardcoded data jwz
         courseModels.add(new CourseModel("IKPMD", "3", "10", "2"));
