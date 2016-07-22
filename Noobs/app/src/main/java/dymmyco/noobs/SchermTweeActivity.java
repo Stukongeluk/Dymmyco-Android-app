@@ -1,5 +1,6 @@
 package dymmyco.noobs;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -30,8 +31,11 @@ import dymmyco.noobs.models.CourseModel;
  */
 public class SchermTweeActivity extends AppCompatActivity {
     private ListView courseList;
+    private Menu menu;
     private CourseListAdapter adapter;
     private List<CourseModel> courseModels = new ArrayList<>();
+    private String username;
+    private int requestCode = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,22 +72,37 @@ public class SchermTweeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
-        String userName = getName(ProfielActivity.getFile());
+       this.username = getName(ProfielActivity.getFile());
 
         MenuItem name = menu.findItem(R.id.action_header);
-        name.setTitle(userName);
+        name.setTitle(username);
         return true;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                username = data.getStringExtra("username");
+                updateMenuItem();
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                return;
+            }
+        }
+    }//onActivityResult
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_header:
                 //The profile page
-                this.startActivity(new Intent(getApplicationContext(), ProfielEditActivity.class));
+                startActivityForResult(new Intent(this, ProfielEditActivity.class), requestCode);
                 return true;
 
             case R.id.action_help:
@@ -120,5 +139,10 @@ public class SchermTweeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return new String(bytes);//Vies want als er meer info bij het text bestandje komt laat ie niet alleen username zien xD//TODO
+    }
+
+    public void updateMenuItem() {
+        MenuItem menuName = menu.findItem(R.id.action_header);
+        menuName.setTitle(username);
     }
 }

@@ -12,5 +12,6 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="nameholder">Name:</string>
+    <string name="hint_example">example</string>
 
 </resources>
