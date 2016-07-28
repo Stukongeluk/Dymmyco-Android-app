@@ -26,8 +26,32 @@
         android:paddingTop="20dp"
         android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/header_ec" />
+        android:layout_toEndOf="@+id/header_grade"
+        android:layout_alignBottom="@+id/course_header" />
+
+    <TextView
+        android:id="@+id/header_grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:text="@string/grades_header"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_below="@+id/course_header"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/subject_grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_toEndOf="@+id/header_grade"
+        android:layout_alignBottom="@+id/header_grade" />
 
     <TextView
         android:id="@+id/header_ec"
@@ -38,8 +62,8 @@
         android:paddingTop="20dp"
         android:text="@string/studypoints_header"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_marginTop="39dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/course_header"
         android:layout_alignParentStart="true" />
     <TextView
         android:id="@+id/subject_code"
@@ -50,8 +74,33 @@
         android:paddingTop="20dp"
         android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_alignTop="@+id/header_ec"
-        android:layout_toEndOf="@+id/header_ec" />
-        />
+        android:layout_alignStart="@+id/subject_period"
+        android:layout_above="@+id/header_period" />
+
+    <TextView
+        android:id="@+id/header_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:text="@string/periode_header"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_below="@+id/header_ec"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/subject_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_alignTop="@+id/header_period"
+        android:layout_toEndOf="@+id/header_grade"
+        android:layout_alignBottom="@+id/header_period" />
+    />
 
 </RelativeLayout>

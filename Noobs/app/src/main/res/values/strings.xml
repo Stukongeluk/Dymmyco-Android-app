@@ -13,5 +13,7 @@
     <string name="cancel">Cancel</string>
     <string name="nameholder">Name:</string>
     <string name="hint_example">example</string>
+    <string name="grades_header">Cijfer:</string>
+    <string name="periode_header">Periode:</string>
 
 </resources>

@@ -37,7 +37,9 @@ public class CourseListAdapter extends ArrayAdapter<CourseModel> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.view_content_row, parent, false);
             holder.name = (TextView) convertView.findViewById(R.id.subject_name);
+            holder.grade = (TextView) convertView.findViewById(R.id.subject_grade);
             holder.code = (TextView) convertView.findViewById(R.id.subject_code);
+            holder.period = (TextView) convertView.findViewById(R.id.subject_period);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -45,13 +47,16 @@ public class CourseListAdapter extends ArrayAdapter<CourseModel> {
 
         CourseModel courseModel = getItem(position);
         holder.name.setText(courseModel.name);
+        holder.grade.setText(courseModel.grade);
         holder.code.setText(courseModel.ects);
+        holder.period.setText(courseModel.period);
         return convertView;
     }
 
     private static class ViewHolder {
         TextView name;
+        TextView grade;
         TextView code;
-
+        TextView period;
     }
 }

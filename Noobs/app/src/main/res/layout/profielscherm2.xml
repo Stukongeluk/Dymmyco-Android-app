@@ -23,7 +23,7 @@
                 android:textIsSelectable="false"
                 android:textAlignment="viewStart"
                 android:layout_weight="0"
-                android:paddingTop="15dp" />
+                android:paddingTop="105dp" />
 
             <EditText
                 android:id="@+id/name_editor"
@@ -34,6 +34,7 @@
                 android:textColor="#ffffff"
                 android:textSize="25sp"
                 android:singleLine="false"
+                android:paddingTop="105dp"
                 android:layout_column="2"
                 android:layout_weight="1" />
         </TableRow>

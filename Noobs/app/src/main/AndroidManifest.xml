@@ -29,6 +29,14 @@
             android:name=".ProfielEditActivity"
             android:label="@string/app_name">
         </activity>
+        <activity
+            android:name=".InvoerActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".CijferPopupActivity"
+            android:label="@string/app_name">
+        </activity>
     </application>
 
 </manifest>

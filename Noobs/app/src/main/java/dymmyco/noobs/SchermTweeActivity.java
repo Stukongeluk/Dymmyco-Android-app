@@ -52,7 +52,9 @@ public class SchermTweeActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Placeholder bruuuuh", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+//                Snackbar.make(view, "Placeholder bruuuuh", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                Intent i = new Intent(getApplicationContext(), InvoerActivity.class);
+                startActivity(new Intent(i));
             }
         });
         courseList = (ListView) findViewById(R.id.my_list_view);
