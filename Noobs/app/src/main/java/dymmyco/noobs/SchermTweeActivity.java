@@ -3,18 +3,29 @@ package dymmyco.noobs;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.ChartData;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,9 +46,21 @@ public class SchermTweeActivity extends AppCompatActivity {
     private Menu menu;
     private CourseListAdapter adapter;
     private List<CourseModel> courseModels = new ArrayList<>();
+
     private String username;
     private int requestCode = 1;
-//    private int requestCode2 = 2;
+
+    private View header;
+
+
+    private PieChart pieChart;
+    private float[] yData = { 30, 20 };
+    private String[] xData = {"Behaalde EC's", "EC's over"};
+
+    private ProgressBar progressBar;
+
+    private int whiteText = Color.rgb(248,248,255);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +80,15 @@ public class SchermTweeActivity extends AppCompatActivity {
                 startActivity(new Intent(i));
             }
         });
-        courseList = (ListView) findViewById(R.id.my_list_view);
-        courseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast t = Toast.makeText(SchermTweeActivity.this, "Positie kan die opvragen omg: " + position, Toast.LENGTH_SHORT);
-                t.show();
-            }
-        }
-        );
-        //hardcoded data jwz
-        courseModels.add(new CourseModel("IKPMD", "3", "10", "2"));
-        courseModels.add(new CourseModel("IKUE", "3", "10", "2"));
+
 
         adapter = new CourseListAdapter(SchermTweeActivity.this, 0, courseModels);
+
+        courseList = (ListView) findViewById(R.id.main_listview);
         courseList.setAdapter(adapter);
+
+        //Add chart to view
+        addChart();
     }
 
     @Override
@@ -151,5 +168,63 @@ public class SchermTweeActivity extends AppCompatActivity {
     public void updateMenuItem() {
         MenuItem menuName = menu.findItem(R.id.action_header);
         menuName.setTitle(username);
+    }
+
+    public void addChartData() {
+        ArrayList<String> xVals = new ArrayList<>();
+        //Add the hardcoded string values
+        for (String names: xData) {
+            xVals.add(names);
+        }
+
+        ArrayList<PieEntry> dataValues = new ArrayList<>();
+        int i = 0;
+        //Add the hardcoded value data
+        for (float values: yData) {
+            dataValues.add(new PieEntry(values, xVals.get(i)));
+            i++;
+        }
+        //set Colors
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.rgb(0,128,128));
+        colors.add(Color.rgb(205,0,0));
+
+        //Create piechart dataset
+        PieDataSet dataSet = new PieDataSet(dataValues, "");
+        dataSet.setColors(colors);
+        dataSet.setSliceSpace(5f);
+        dataSet.setSelectionShift(12f);
+
+        PieData piechartData = new PieData(dataSet);
+        piechartData.setValueTextColor(whiteText);
+        piechartData.setValueTextSize(30f);
+
+        pieChart.setData(piechartData);
+
+        pieChart.highlightValue(null);
+
+        pieChart.invalidate();
+    }
+
+    public void addChart() {
+        //Instantiate piechart
+        pieChart = (PieChart) findViewById(R.id.piechart);
+        //configuring piechart
+        pieChart.setUsePercentValues(false);
+        pieChart.setDescription("Aantal EC's behaald in vergelijking met aantal te halen EC's");
+        pieChart.setCenterText("Voortgang van amazing 2e jaar");
+
+        // enable hole
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setHoleRadius(30);
+        pieChart.setHoleColor(R.color.colorBackground);
+        pieChart.setTransparentCircleRadius(40);
+        pieChart.setCenterTextColor(whiteText);
+
+        addChartData();
+
+        //set legend
+        Legend legend = pieChart.getLegend();
+        legend.setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
     }
 }

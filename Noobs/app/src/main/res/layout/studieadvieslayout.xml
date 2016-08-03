@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentTop="true">
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Studie advies"
+        android:textAllCaps="true"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        android:textSize="50dp"
+        android:id="@+id/adviesKopje"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorBackground"/>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SASUKEEEE"
+        android:textColor="@color/colorText"
+        android:id="@+id/adviesContext"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorBackground"/>
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@android:color/black"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/piechart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground" />
+
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@android:color/black"/>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SASUKEEEE"
+        android:textColor="@color/colorText"
+        android:id="@+id/vakken_niet_gehaald"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorBackground"/>
+
+    </LinearLayout>
+</ScrollView>
