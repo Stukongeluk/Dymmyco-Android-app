@@ -14,10 +14,15 @@
         android:layout_marginBottom="21dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
+            android:id="@+id/main_linear"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true">
 
@@ -31,7 +36,9 @@
                 android:textSize="50dp"
                 android:id="@+id/adviesKopje"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/colorBackground"/>
+                android:background="@color/colorBackground"
+                android:padding="5dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -40,7 +47,8 @@
                 android:textColor="@color/colorText"
                 android:id="@+id/adviesContext"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/colorBackground"/>
+                android:background="@color/colorBackground"
+                android:padding="5dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
@@ -49,7 +57,7 @@
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/piechart"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="300dp"
                 android:background="@color/colorBackground" />
 
             <View
@@ -60,18 +68,24 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SASUKEEEE"
+                android:text="@string/main_notpassed"
                 android:textColor="@color/colorText"
                 android:id="@+id/vakken_niet_gehaald"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/colorBackground"/>
+                android:background="@color/colorBackground"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:padding="5dp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/wannabeListView"
+                android:background="@color/colorBackground">
+            </LinearLayout>
 
         </LinearLayout>
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/main_listview"
-        android:background="@color/colorBackground"
-        />
 
+    </ScrollView>
 </RelativeLayout>

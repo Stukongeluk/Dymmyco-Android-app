@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">DYMMYCO</string>
+    <string name="main_name">Hoofdscherm</string>
+    <string name="input_name">Overzicht</string>
+    <string name="popup_name">Invoerscherm</string>
+
     <string name="confirm">Confirm</string>
     <string name="username">Username</string>
     <string name="pogoLevel">Pokémon GO Level</string>
@@ -8,6 +12,16 @@
 
     <string name="course_header">Vak:</string>
     <string name="studypoints_header">EC:</string>
+    <string name="main_notpassed">Restrerende vakken voor dit jaar:</string>
+    <string name="main_advice_red"> Je hebt te weinig studiepunten om nog zonder tussenjaar door te gaan.\n
+                                    Focus je vooral op IPSEN/Projecten, want daar heb je het meeste profeit van.\n
+                                    Minder No man\'s sky spelen ook.</string>
+    <string name="main_advice_orange">Je hebt genoeg punten om door te gaan zonder tussenjaar mits je geen IPSENH doet.\n
+                                     Als je 45 punten hebt kan je volgend jaar meteen een stage doen, anders begin met je minor.\n
+                                    Als dit niet het eind van het jaar is raden we je aan om nog effe door te zetten voor de 53+ EC(Alle hoofdvakken).</string>
+    <string name="main_advice_green">Gefeliciteerd, je hebt genoeg punten om zelf je volgende jaren in te delen en gemakkelijker je studie te halen.\n
+                                     Als je alle hoofdvakken hebt gehaald , kan je het volgende jaar IPSENH doen. Natuurlijk ook je minor of stage als dat je beter lijkt.\n
+                                     Probeer alle punten nog te halen als het nog kan en je zal je jaar nog beter eindigen.</string>
 
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
