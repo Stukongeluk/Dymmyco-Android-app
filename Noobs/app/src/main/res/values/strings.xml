@@ -15,5 +15,10 @@
     <string name="hint_example">example</string>
     <string name="grades_header">Cijfer:</string>
     <string name="periode_header">Periode:</string>
+    <string name="popup_header">Vak naam</string>
+    <string name="popup_info">Vak info</string>
+    <string name="popup_invoeren">Invoeren</string>
+    <string name="popup_annuleren">Annuleren</string>
+    <string name="popup_cijfer">Cijfer</string>
 
 </resources>

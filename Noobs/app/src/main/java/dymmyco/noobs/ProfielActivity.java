@@ -1,5 +1,6 @@
 package dymmyco.noobs;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -20,7 +21,6 @@ import java.io.IOException;
  * Created by Dylan on 20-7-2016.
  */
 public class ProfielActivity extends AppCompatActivity {
-    private static File file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,33 +33,11 @@ public class ProfielActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                EditText name = (EditText) findViewById(R.id.editName);
-                String userName = name.getText().toString();
-
-                try {//Writes player name to file
-                    File path = getFilesDir();
-                    file = new File(path, "ProfileData");
-                    FileOutputStream fos = new FileOutputStream(file);
-                    fos.write(userName.getBytes());
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                //Instead of making new activity, return to the previous activity ;D
+                writeToFile();
+                //Instead of making new activity, back to the previous activity ;D
                 finish();
             }
         });
-    }
-
-    /**
-     * -
-     * Static method to get the file with user data. Usable in other classes.
-     *
-     * @return file
-     */
-    //Lelijk //TODO
-    public static File getFile() {
-        return file;
     }
 
     @Override
@@ -81,7 +59,6 @@ public class ProfielActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_close:
-//                System.exit(0);
                 this.finishAffinity();
                 return true;
 
@@ -90,6 +67,19 @@ public class ProfielActivity extends AppCompatActivity {
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
 
+        }
+    }
+
+    public void writeToFile() {
+        EditText name = (EditText) findViewById(R.id.editName);
+        String userName = name.getText().toString();
+
+        try {
+            FileOutputStream fos = openFileOutput("ProfileData", Context.MODE_PRIVATE);
+            fos.write(userName.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

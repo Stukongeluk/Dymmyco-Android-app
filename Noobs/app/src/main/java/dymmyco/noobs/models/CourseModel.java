@@ -10,12 +10,14 @@ public class CourseModel implements Serializable {
     public String name;
     public String ects;
     public String grade;
+    public String info;
 
-    public CourseModel(String courseName, String ects, String grade, String period) {
+    public CourseModel(String courseName, String ects, String grade, String period, String info) {
         this.name = courseName;
         this.ects = ects;
         this.grade = grade;
         this.period = period;
+        this.info = info;
     }
 
     public CourseModel() {

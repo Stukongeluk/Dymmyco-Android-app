@@ -6,10 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,14 +18,10 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +58,7 @@ public class SchermTweeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setContentView(R.layout.tweedescherm);
 
         //Toast the welcome message
@@ -80,11 +73,20 @@ public class SchermTweeActivity extends AppCompatActivity {
                 startActivity(new Intent(i));
             }
         });
-
+        courseList = (ListView) findViewById(R.id.my_list_view);
+        courseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                              @Override
+                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                                  Toast t = Toast.makeText(SchermTweeActivity.this, "Positie kan die opvragen omg: " + position, Toast.LENGTH_SHORT);
+                                                  t.show();
+                                              }
+                                          }
+        );
+        //hardcoded data jwz
+        courseModels.add(new CourseModel("IKPMD", "3", "10", "2", ""));
+        courseModels.add(new CourseModel("IKUE", "3", "10", "2", ""));
 
         adapter = new CourseListAdapter(SchermTweeActivity.this, 0, courseModels);
-
-        courseList = (ListView) findViewById(R.id.main_listview);
         courseList.setAdapter(adapter);
 
         //Add chart to view
@@ -97,7 +99,9 @@ public class SchermTweeActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
-       this.username = getName(ProfielActivity.getFile());
+//       this.username = getName(ProfielActivity.getFile());
+
+        this.username = MainActivity.username;
 
         MenuItem name = menu.findItem(R.id.action_header);
         name.setTitle(username);
@@ -148,21 +152,6 @@ public class SchermTweeActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
-    }
-
-    public String getName(File file) {
-        //lelijk maar moest ff snel snachts ;D//TODO
-        int length = (int) file.length();
-        byte[] bytes = new byte[length];
-
-        try {//Reads file content
-            FileInputStream inputStream = new FileInputStream(file);
-            inputStream.read(bytes);
-            inputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new String(bytes);//Vies want als er meer info bij het text bestandje komt laat ie niet alleen username zien xD//TODO
     }
 
     public void updateMenuItem() {

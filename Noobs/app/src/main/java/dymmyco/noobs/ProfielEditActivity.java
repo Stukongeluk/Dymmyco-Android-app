@@ -1,6 +1,7 @@
 package dymmyco.noobs;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -25,12 +26,12 @@ public class ProfielEditActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setContentView(R.layout.profielscherm2);
 
         Button save = (Button) findViewById(R.id.profilesave);
         EditText naam = (EditText) findViewById(R.id.name_editor);
-        naam.setText(getName(ProfielActivity.getFile()));
+//        naam.setText(getName(ProfielActivity.getFile()));
         Button cancel = (Button) findViewById(R.id.profilecancel);
 
         save.setOnClickListener(this);
@@ -39,18 +40,18 @@ public class ProfielEditActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.profilesave:
                 EditText editedNaam = (EditText) findViewById(R.id.name_editor);
                 String userName = editedNaam.getEditableText().toString();
 
-                writeToFile(userName);
+                writeToFile();
                 //Confirmation message
                 Toast t = Toast.makeText(ProfielEditActivity.this, "Opgeslagen", Toast.LENGTH_SHORT);
                 t.show();
 
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra("username",userName);
+                returnIntent.putExtra("username", userName);
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();
 
@@ -61,27 +62,14 @@ public class ProfielEditActivity extends AppCompatActivity implements View.OnCli
                 break;
         }
     }
-    public String getName(File file) {
-        //lelijk maar moest ff snel snachts ;D//TODO
-        int length = (int) file.length();
-        byte[] bytes = new byte[length];
 
-        try {//Reads file content
-            FileInputStream inputStream = new FileInputStream(file);
-            inputStream.read(bytes);
-            inputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new String(bytes);//Vies want als er meer info bij het text bestandje komt laat ie niet alleen username zien xD//TODO
-    }
+    public void writeToFile() {
+        EditText name = (EditText) findViewById(R.id.name_editor);
+        String username = name.getText().toString();
 
-    public void writeToFile(String name) {
-        try {//Writes player name to file
-            File path = getFilesDir();
-            File file = ProfielActivity.getFile();
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(name.getBytes());
+        try {
+            FileOutputStream fos = openFileOutput("ProfileData", Context.MODE_PRIVATE);
+            fos.write(username.getBytes());
             fos.close();
         } catch (IOException e) {
             e.printStackTrace();
