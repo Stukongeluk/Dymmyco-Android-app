@@ -27,8 +27,7 @@ public class CijferPopupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText editCijfer = (EditText) findViewById(R.id.popup_editCijfer);
                 cijfer = editCijfer.getText().toString();
-                Intent i = new Intent(getApplicationContext(), InvoerActivity.class);
-                startActivity(new Intent(i));
+                finish();
             }
         });
     }

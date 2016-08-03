@@ -37,6 +37,7 @@ public class SchermTweeActivity extends AppCompatActivity {
     private List<CourseModel> courseModels = new ArrayList<>();
     private String username;
     private int requestCode = 1;
+//    private int requestCode2 = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,6 @@ public class SchermTweeActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Placeholder bruuuuh", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 Intent i = new Intent(getApplicationContext(), InvoerActivity.class);
                 startActivity(new Intent(i));
             }
@@ -91,13 +91,16 @@ public class SchermTweeActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
-            if(resultCode == Activity.RESULT_OK){
+            if (resultCode == Activity.RESULT_OK) {
                 username = data.getStringExtra("username");
                 updateMenuItem();
             }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                return;
-            }
+//        } else if(requestCode == 2) {
+//            if(resultCode == Activity.RESULT_OK) {
+//
+//            }
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            return;
         }
     }//onActivityResult
 

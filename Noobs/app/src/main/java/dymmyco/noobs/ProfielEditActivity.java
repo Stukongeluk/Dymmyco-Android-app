@@ -48,6 +48,7 @@ public class ProfielEditActivity extends AppCompatActivity implements View.OnCli
                 //Confirmation message
                 Toast t = Toast.makeText(ProfielEditActivity.this, "Opgeslagen", Toast.LENGTH_SHORT);
                 t.show();
+
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("username",userName);
                 setResult(Activity.RESULT_OK, returnIntent);
