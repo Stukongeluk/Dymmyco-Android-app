@@ -1,2 +1,5 @@
 # Hsleiden-IKPMD
-YOYOYOYOYOYOYO Gewoon beetje ikpmd van 2015/2016 doen in de zomer.
+Creating our first android application that is based on the IKPMD 2015/2016 course of HSLeiden.
+We won't fullfill all the requirements of the application, like getting JSON files from a server.
+
+In other words, it's just a practice application ;D
